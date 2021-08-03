@@ -4,7 +4,10 @@ import { Asset } from "expo-asset";
 import * as Font from 'expo-font';
 import { Ionicons } from "@expo/vector-icons";
 import { Text, Image } from "react-native";
-
+import Gate from './components/Gate';
+import store , { persistor }from "./redux/store";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 const cacheImages = images => images.map(image => {
   if (typeof image === "string") {
@@ -28,6 +31,12 @@ export default function App() {
     return Promise.all([...imagePromises, ...fontPromises])
   };
 
-  return isReady ? <Text>I'am ready</Text>
-    : <AppLoading onError={console.error} onFinish={handleFinish} startAsync={loadAssets} />;
+  return isReady ? (
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Gate />
+        </PersistGate>
+      </Provider>
+      )
+    : (<AppLoading onError={console.error} onFinish={handleFinish} startAsync={loadAssets} /> );
 }
