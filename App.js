@@ -20,7 +20,7 @@ const cacheImages = images => images.map(image => {
 const cacheFonts = fonts => fonts.map(font => Font.loadAsync(font))
 export default function App() {
   const [isReady, setIsReady] = useState(false);
-  const handleFinish = () => setIsReady(true)
+  const handleFinish = () => setIsReady(true);
   const loadAssets = async () => {
     const images = [require("./assets/loginBg.jpg"), require("./assets/airbnb-logo.png")];
     const fonts = [
