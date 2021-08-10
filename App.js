@@ -22,7 +22,11 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const handleFinish = () => setIsReady(true);
   const loadAssets = async () => {
-    const images = [require("./assets/loginBg.jpg"), require("./assets/airbnb-logo.png")];
+    const images = [
+      require("./assets/loginBg.jpg"), 
+      require("./assets/airbnb-logo.png"),
+      require("./assets/roomDefault.jpg")
+      ];
     const fonts = [
       Ionicons.font
     ];

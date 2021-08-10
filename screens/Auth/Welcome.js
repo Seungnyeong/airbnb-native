@@ -17,7 +17,7 @@ const Image = styled.Image`
 `;
 
 const Logo = styled.Image`
-    margin-top : 100px
+    margin-top : 100px 
     width : 100px;
     height : 130px;
 `;

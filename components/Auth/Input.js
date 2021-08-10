@@ -22,7 +22,7 @@ const Input = ({ value, placeholder, isPassword=false, autoCapitalize , stateFn,
         placeholder={placeholder} 
         secureTextEntry={isPassword ? true : false} 
         autoCapitalize={autoCapitalize} 
-        onChangeText={(text) => stateFn(text)}
+        onChangeText={text => stateFn(text)}
     />
 
 
