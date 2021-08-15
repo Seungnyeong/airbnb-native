@@ -22,13 +22,29 @@ const Fakebar = styled.View`
     padding-left: 10px;
 `;
 
-const FaakeText = styled.Text`
+const FakeText = styled.Text`
     font-size: 16px;
     font-weight: 300;
 `;
 
+const LoadMore = styled.View`
+    width : 100%;
+    padding: 10px 10px;
+    align-items : center;
+    background-color : #006A70;
+    border-radius : 5px;
+    margin-bottom : 30px;
+`;
 
-export default ({ rooms }) => {
+const LoadMoreText = styled.Text`
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+`;
+
+
+
+export default ({ rooms, increasePage }) => {
 
     return (
         <Container>
@@ -37,7 +53,7 @@ export default ({ rooms }) => {
                 ): (
                     <>
                     <Fakebar>
-                        <FaakeText>Search...</FaakeText>
+                        <FakeText>Search...</FakeText>
                     </Fakebar>
                     <ScrollView 
                         style={{ width: "100%"}} 
@@ -57,8 +73,10 @@ export default ({ rooms }) => {
                                     />
                                 )
                         }
-                        <TouchableOpacity>
-                            <Text>Load More</Text>
+                        <TouchableOpacity onPress={increasePage}>
+                            <LoadMore>
+                                <LoadMoreText>Load More</LoadMoreText>
+                            </LoadMore>
                         </TouchableOpacity>
                     </ScrollView>
                    </>
