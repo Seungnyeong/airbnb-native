@@ -1,4 +1,5 @@
 import React from "react";
+import { createStackNavigator } from "@react-navigation/stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import Explore from "../screens/Main/Explore";
@@ -8,11 +9,15 @@ import Profile from "../screens/Main/Profile";
 import colors from "../colors";
 import utils from "../utils";
 import { View } from "react-native";
+import Room from "../screens/Main/Room";
+import BackBtn from "../components/Auth/BackBtn";
+import { BlurView } from "expo-blur";
+import { StyleSheet } from "react-native";
+const TabsNavigator = createBottomTabNavigator();
+const MainNavigator = createStackNavigator();
 
-const Main = createBottomTabNavigator();
-
-export default () => (
-  <Main.Navigator
+const Tabs = () => (
+  <TabsNavigator.Navigator
    
     screenOptions={({ route }) => ({
         "tabBarActiveTintColor": "#FF5A5F",
@@ -51,9 +56,27 @@ export default () => (
       }
     })}
   >
-    <Main.Screen name="Explore" component={Explore}></Main.Screen>
-    <Main.Screen name="Saved" component={Saved}></Main.Screen>
-    <Main.Screen name="Map" component={MapScreen}></Main.Screen>
-    <Main.Screen name="Profile" component={Profile}></Main.Screen>
-  </Main.Navigator>
+    <TabsNavigator.Screen name="Explore" component={Explore}/>
+    <TabsNavigator.Screen name="Saved" component={Saved}/>
+    <TabsNavigator.Screen name="Map" component={MapScreen}/>
+    <TabsNavigator.Screen name="Profile" component={Profile}/>
+  </TabsNavigator.Navigator>
 );
+
+export default () => (
+  <MainNavigator.Navigator screenOptions={{ headerTintColor: "black", headerBackTitleVisible : false, presentation : "float", headerBackImage : () => <BackBtn /> }}>
+    <MainNavigator.Screen name="tabs" component={Tabs} 
+      options={{ 
+        headerShown: false, 
+      }}>
+     </MainNavigator.Screen>
+    <MainNavigator.Screen component={Room} name="RoomDetail" options={{
+        headerTransparent: true,
+        headerBackground: () => (<BlurView
+          intensity={50}
+          tint="light"
+          style={StyleSheet.absoluteFill}
+        />),
+    }}  />
+  </MainNavigator.Navigator>
+)

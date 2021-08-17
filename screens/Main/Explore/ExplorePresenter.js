@@ -70,6 +70,7 @@ export default ({ rooms, increasePage }) => {
                                         id={room.id}
                                         isSuperHost={room.user.superhost}
                                         isFav={room.is_fav}
+                                        roomObj={room}
                                     />
                                 )
                         }

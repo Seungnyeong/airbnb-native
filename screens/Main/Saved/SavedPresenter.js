@@ -30,6 +30,7 @@ export default ({ rooms }) => (
                                         id={room.id}
                                         isSuperHost={room.user.superhost}
                                         isFav={room.is_fav}
+                                        roomObj={room}
                                     />) : <NoFavs>You don't have any Favs</NoFavs>}</SV>
     </Container>
 )
