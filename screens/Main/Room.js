@@ -117,6 +117,7 @@ export default ({route : { params }, navigation}) => {
                                 longitude : parseFloat(params.lng)
                             },
                             altitude : 10 * 500,
+                            zoom : 10,
                             pitch : 25,
                             heading : 0
                         }}    

@@ -10,6 +10,7 @@ import colors from "../colors";
 import utils from "../utils";
 import { View } from "react-native";
 import Room from "../screens/Main/Room";
+import Search from "../screens/Main/Search";
 import BackBtn from "../components/Auth/BackBtn";
 import { BlurView } from "expo-blur";
 import { StyleSheet } from "react-native";
@@ -78,5 +79,6 @@ export default () => (
           style={StyleSheet.absoluteFill}
         />),
     }}  />
+    <MainNavigator.Screen name="search" options={{headerShown : false}} component={Search}/>
   </MainNavigator.Navigator>
 )
